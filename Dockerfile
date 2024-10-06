@@ -3,18 +3,14 @@
 # Alpine is chosen for its small footprint
 # compared to Ubuntu
 
-FROM python:alpine
+FROM ubuntu:22.04
 
 # install packages
-RUN apk add --no-cache \
-    libstdc++ \
-    libintl \
-    glib \
-    qt5-qtbase-dev \
-    py3-pyqt5
+RUN apt-get update \
+    && apt-get install -y libglib2.0-0 python3-pyqt5 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip3 install tenacity requests
-
-
 # copy over files
 WORKDIR /app
 RUN mkdir /app/AzerothAuctionAssassinData/
