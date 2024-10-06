@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azerothauctionassassin
+  labels:
+    app: azerothauctionassassin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azerothauctionassassin
+  template:
+    metadata:
+      labels:
+        app: azerothauctionassassin
+    spec:
+      containers:
+        - name: azerothauctionassassin
+          image: vvanouytsel/azerothauctionassassin:latest
+          imagePullPolicy: Always
+          env:
+            - name: MEGA_WEBHOOK_URL
+              value: {{ .Values.megaWebhookUrl }}
+            - name: WOW_CLIENT_ID
+              value: {{ .Values.wowClientId }}
+            - name: WOW_CLIENT_SECRET
+              value: {{ .Values.wowClientSecret }}
+            - name: WOW_REGION
+              value: {{ .Values.wowRegion }}
+            - name: NO_RUSSIAN_REALMS
+              value: {{ .Values.noRussianRealms }}
+            - name: IMPORTANT_EMOJI
+              value: {{ .Values.importantEmoji }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
