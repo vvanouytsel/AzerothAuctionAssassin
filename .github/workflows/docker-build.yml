@@ -1,6 +1,7 @@
 name: docker-build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
@@ -27,4 +28,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: cohenaj194/azerothauctionassassin
+          tags: vvanouytsel/azerothauctionassassin
+          platforms: linux/amd64,linux/arm64
