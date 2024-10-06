@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: azerothauctionassassin
-          image: vvanouytsel/azerothauctionassassin:latest
+          image: ghcr.io/vvanouytsel/azerothauctionassassin:latest
           imagePullPolicy: Always
           env:
             - name: MEGA_WEBHOOK_URL
@@ -26,10 +26,8 @@ spec:
             - name: WOW_CLIENT_SECRET
               value: {{ .Values.wowClientSecret }}
             - name: WOW_REGION
-              value: {{ .Values.wowRegion }}
+              value: EU
             - name: NO_RUSSIAN_REALMS
-              value: {{ .Values.noRussianRealms }}
-            - name: IMPORTANT_EMOJI
-              value: {{ .Values.importantEmoji }}
-          ports:
-            - containerPort: {{ .Values.service.port }}
+              value: true
+            - name: DESIRED_ITEMS
+              value: {{ .Values.items | toJson }}

@@ -1,4 +1,7 @@
 name: docker-build
+permissions:
+  contents: write
+  packages: write
 
 on:
   workflow_dispatch:
@@ -12,6 +15,16 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: "ghcr.io"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -28,5 +41,12 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: vvanouytsel/azerothauctionassassin
+          tags: vvanouytsel/azerothauctionassassin:latest,ghcr.io/vvanouytsel/azerothauctionasssassin:latest
           platforms: linux/amd64,linux/arm64
+
+      - name: Package and push helm chart
+        run: |
+          current_date=$(date +'%Y%m%d%H%M')
+          version="1.0.0-${current_date}"
+          helm package helm/azerothauctionassassin --version $version --app-version $version
+          helm push azerothauctionassassin-$version.tgz oci://ghcr.io/vvanouytsel/azerothauctioniassassin-chart

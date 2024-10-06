@@ -1,6 +1,11 @@
-megaWebhookUrl: "xx"
-wowClientId: "xx"
-wowClientSecret: "xx"
-wowRegion: "eu"
-noRussianRealms: "true"
-importantEmoji: "🚨"
+megaWebhookUrl: "https://discord.com/api/webhooks/123456789/somesecretstring"
+wowClientId: ""
+wowClientSecret: ""
+
+# The key is the item ID and the value is the threshold price whenever you want to trigger an alert.
+# In this example you will get an alert if
+# - the item with ID 222853 is below 1500 gold (Weavercloth bag)
+# - the item with ID 224106 is below 300 gold (Algari Mana Oil)
+items:
+  - "222853": 1500
+  - "224106": 300
