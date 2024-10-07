@@ -30,4 +30,4 @@ spec:
             - name: NO_RUSSIAN_REALMS
               value: true
             - name: DESIRED_ITEMS
-              value: {{ .Values.items | toJson }}
+              value: '{{ .Values.items | toJson }}'
