@@ -7,5 +7,5 @@ wowClientSecret: "xxx"
 # - the item with ID 222853 is below 1500 gold (Weavercloth bag)
 # - the item with ID 224106 is below 300 gold (Algari Mana Oil)
 items:
-  - "222853": 1500
-  - "224106": 300
+  "222853": 1500
+  "224106": 300
