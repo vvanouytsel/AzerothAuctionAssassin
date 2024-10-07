@@ -20,14 +20,14 @@ spec:
           imagePullPolicy: Always
           env:
             - name: MEGA_WEBHOOK_URL
-              value: {{ .Values.megaWebhookUrl }}
+              value: {{ .Values.megaWebhookUrl | quote }}
             - name: WOW_CLIENT_ID
-              value: {{ .Values.wowClientId }}
+              value: {{ .Values.wowClientId | quote }}
             - name: WOW_CLIENT_SECRET
-              value: {{ .Values.wowClientSecret }}
+              value: {{ .Values.wowClientSecret | quote }}
             - name: WOW_REGION
-              value: EU
+              value: "EU"
             - name: NO_RUSSIAN_REALMS
-              value: true
+              value: "true"
             - name: DESIRED_ITEMS
               value: '{{ .Values.items | toJson }}'
