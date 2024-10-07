@@ -1,6 +1,6 @@
 megaWebhookUrl: "https://discord.com/api/webhooks/123456789/somesecretstring"
-wowClientId: ""
-wowClientSecret: ""
+wowClientId: "xxx"
+wowClientSecret: "xxx"
 
 # The key is the item ID and the value is the threshold price whenever you want to trigger an alert.
 # In this example you will get an alert if

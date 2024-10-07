@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: azerothauctionassassin-config
+data:
+  MEGA_WEBHOOK_URL: "{{ .Values.megaWebhookUrl }}"
+  WOW_CLIENT_ID: "{{ .Values.wowClientId }}"
+  WOW_CLIENT_SECRET: "{{ .Values.wowClientSecret }}"
+  WOW_REGION: "EU"
+  NO_RUSSIAN_REALMS: "true"
+  DESIRED_ITEMS: '{{ .Values.items | toJson }}'
